@@ -21,7 +21,6 @@ const Cart = () => {
             .catch(err => console.log(err))
     }, [])
 
-    console.log(cartProducts)
 
 
     return (

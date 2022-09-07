@@ -13,6 +13,7 @@ const ProductCard = ({ product }) => {
         <article className='product-card' onClick={handleNavigate}>
             <header className='product-card__header'>
                 <img className='product-card__img' src={product.productImgs[0]} alt={product.description} />
+                <img className='product-card__img-active' src={product.productImgs[1]} alt={product.description} />
             </header>
             <div className="product-card__body">
                 <h3 className="product-card__title">{product.title}</h3>
