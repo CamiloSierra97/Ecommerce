@@ -1,0 +1,86 @@
+body {
+    margin: 0%;
+    font-family: 'Poppins', sans-serif;
+}
+
+ul {
+    list-style: none;
+    padding: 0%;
+}
+
+.header {
+    display: flex;
+    width: 100vw;
+}
+
+.header__logo__container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.header__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 20vw;
+    margin: 0%;
+    height: 100%;
+}
+
+.header__nav {
+    display: block;
+    margin-left: 30vw;
+}
+
+.header__list {
+    display: flex;
+    gap: 3rem;
+    justify-content: space-around;
+    width: 50vw;
+}
+
+.bxs-cart-alt {
+    color: black;
+    font-size: 2rem;
+}
+
+.bxs-cart-alt:hover {
+    cursor: pointer;
+}
+
+.link {
+    color: black;
+    font-size: 2rem;
+}
+
+.link__active {
+    color: brown;
+    font-size: 2.1rem;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    padding-top: 20vh;
+}
+
+.login__container {
+    width: 50vw;
+    min-height: fit-content;
+    padding: 3% 0%;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+img {
+    width: 100%;
+}
