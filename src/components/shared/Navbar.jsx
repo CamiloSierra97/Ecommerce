@@ -7,7 +7,7 @@ const Navbar = () => {
         <header className="header">
             <NavLink to={<Home />}>
                 <div className='header__logo__container'>
-                    <h1 className="header__logo">e-commerce</h1>
+                    <h1 className="header__logo"><i className='bx bxs-shopping-bags'></i></h1>
                 </div>
             </NavLink>
             <nav className="header__nav">

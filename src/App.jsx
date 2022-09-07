@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
@@ -10,15 +11,18 @@ import Navbar from './components/shared/Navbar'
 function App() {
 
   // useEffect(() => {
-  //   const URL = ''
-  //   const data = {
+  //   const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users'
+  //   const obj = {
   //     firstName: 'Camilo',
   //     lastName: 'Sierra',
-  //     email: 'sierracamilo@gmail.com',
+  //     email: 'sierracamilo3@gmail.com',
   //     password: '3192036492Camilo',
   //     phone: '3192036492',
   //     role: 'admin'
   //   }
+  //   axios.post(URL, obj)
+  //     .then(res => console.log(res.data))
+  //     .catch(err => console.log(err))
 
   // }, [])
   

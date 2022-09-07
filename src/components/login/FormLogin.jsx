@@ -9,7 +9,9 @@ const FormLogin = () => {
     const submit = data => {
         const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users/login'
         axios.post(URL, data)
-            .then(res => console.log(res.data))
+            .then(res => {
+                localStorage.setItem('token', res.data.data.token)
+            })
             .catch(err => console.log(err))
         reset({
             email: '',
