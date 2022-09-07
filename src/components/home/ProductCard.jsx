@@ -17,10 +17,14 @@ const ProductCard = ({ product }) => {
             <div className="product-card__body">
                 <h3 className="product-card__title">{product.title}</h3>
                 <section className="product-card__price">
-                    <h4 className="product-card__price-label">Price</h4>
-                    <span className="product-card__price-value">{product.price}</span>
+                    <div className="product-card__price-container">
+                        <h4 className="product-card__price-label">Price</h4>
+                        <span className="product-card__price-value">&#36; {product.price}</span>
+                    </div>
+                    <div className="product-card__btn-container">
+                        <button className="product-card__btn"><i className='bx bxs-cart-add'></i></button>
+                    </div>
                 </section>
-                <button className="product-card__btn"><i className='bx bxs-cart-add'></i></button>
             </div>
         </article>
     )

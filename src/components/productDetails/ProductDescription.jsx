@@ -8,13 +8,13 @@ const ProductDescription = ({ productDetails }) => {
     const plus = () => setCounter(counter + 1)
 
     const minus = () => {
-        if(counter - 1 > 0) {
+        if (counter - 1 > 0) {
             setCounter(counter - 1)
         }
     }
 
     return (
-        <section className='product__info'>
+        <section className="product__info">
             <h2 className="product__info-name">{productDetails?.title}</h2>
             <p className="product__info-desc">{productDetails?.description}</p>
             <div className="product__info-body">
@@ -25,9 +25,12 @@ const ProductDescription = ({ productDetails }) => {
                 <article className="product__info-quantity">
                     <h3 className="product__info-quantity-label">
                         <div className="product__info-quantity-box">
-                            <button onClick={minus}>-</button>
-                            <div>{counter}</div>
-                            <button onClick={plus}>+</button>
+                            <h4 className="product__info-quantity-title">Quantity</h4>
+                            <div className="product__info-quantity-counter">
+                                <button onClick={minus}>-</button>
+                                <div>{counter}</div>
+                                <button onClick={plus}>+</button>
+                            </div>
                         </div>
                     </h3>
                 </article>
