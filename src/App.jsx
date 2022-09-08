@@ -5,7 +5,9 @@ import './App.css'
 import Home from './components/routes/Home'
 import Login from './components/routes/Login'
 import Product from './components/routes/Product'
+import ProtectedRoutes from './components/routes/ProtectedRoutes'
 import Purchases from './components/routes/Purchases'
+import Cart from './components/routes/Cart'
 import Navbar from './components/shared/Navbar'
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
   //     .catch(err => console.log(err))
 
   // }, [])
-  
+
 
   return (
     <div className="app">
@@ -33,7 +35,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/purchases' element={<Purchases />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path='/purchases' element={<Purchases />} />
+          <Route path='/cart' element={<Cart />} />
+        </Route>
         <Route path='/product/:id' element={<Product />} />
       </Routes>
     </div>

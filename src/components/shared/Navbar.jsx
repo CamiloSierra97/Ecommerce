@@ -1,11 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import Home from '../routes/Home'
 
 const Navbar = () => {
 
 
-    
+
     return (
         <header className="header">
             <NavLink to='/'>
@@ -17,7 +16,7 @@ const Navbar = () => {
                 <ul className="header__list">
                     <li className="header__item"><NavLink className={({ isActive }) => isActive ? 'link__active' : 'link'} to='/login' ><i className='bx bxs-user-circle' ></i></NavLink></li>
                     <li className="header__item"><NavLink className={({ isActive }) => isActive ? 'link__active' : 'link'} to='/purchases'><i className='bx bxs-box' ></i></NavLink></li>
-                    <li className="header__item"><div><i className='bx bxs-cart-alt'></i></div></li>
+                    <li className="header__item"><NavLink className={({ isActive }) => isActive ? 'link__active' : 'link'} to='/cart'><i className='bx bx-cart-alt' ></i></NavLink></li>
                 </ul>
             </nav>
         </header>

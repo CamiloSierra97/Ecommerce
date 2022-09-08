@@ -79,6 +79,9 @@ button {
 }
 
 .login__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50vw;
     min-height: fit-content;
     padding: 3% 0%;
@@ -91,6 +94,10 @@ button {
     flex-direction: column;
     gap: 25px;
     align-items: center;
+}
+
+.login__title {
+    text-align: center;
 }
 
 .login__div-email {
