@@ -15,10 +15,10 @@ function App() {
   // useEffect(() => {
   //   const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users'
   //   const obj = {
-  //     firstName: 'Camilo',
-  //     lastName: 'Sierra',
-  //     email: 'sierracamilo3@gmail.com',
-  //     password: '3192036492Camilo',
+  //     firstName: 'Maria José',
+  //     lastName: 'Patino',
+  //     email: 'majo@gmail.com',
+  //     password: 'majo2022',
   //     phone: '3192036492',
   //     role: 'admin'
   //   }
