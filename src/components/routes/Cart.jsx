@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import getConfig from '../../utils/getConfig'
-import CartInfo from '../cart/CartInfo'
+import CartInformation from '../cart/CartInformation'
 
 const Cart = () => {
 
@@ -12,7 +12,7 @@ const Cart = () => {
 
         const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart'
         axios.get(URL, getConfig())
-            .then(res => setCartProducts(res.data.data.cart.products))
+            .then(res => setCartProducts(res.data))
             .catch(err => console.log(err))
     }, [])
 
@@ -24,7 +24,7 @@ const Cart = () => {
             <div className="cart__container">
                 {
                     cartProducts?.map(cartProduct => {
-                        <CartInfo 
+                        <CartInformation 
                         key={cartProduct.id}
                         cartProduct={cartProduct}
                         />

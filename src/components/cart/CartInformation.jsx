@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CartInfo = ({ cartProduct }) => {
+const CartInformation = ({ cartProduct }) => {
 
     console.log(cartProduct)
 
@@ -18,4 +18,4 @@ const CartInfo = ({ cartProduct }) => {
     )
 }
 
-export default CartInfo
+export default CartInformation
