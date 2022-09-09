@@ -1,16 +1,8 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllProducts } from '../../store/slices/products.slice'
+import { useSelector } from 'react-redux'
 import ProductCard from '../home/ProductCard'
 
 const Home = () => {
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(getAllProducts())
-  }, [])
 
   const products = useSelector(state => state.products)
 

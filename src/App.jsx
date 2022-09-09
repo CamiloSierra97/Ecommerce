@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
@@ -9,6 +8,8 @@ import ProtectedRoutes from './components/routes/ProtectedRoutes'
 import Purchases from './components/routes/Purchases'
 import Cart from './components/routes/Cart'
 import Navbar from './components/shared/Navbar'
+import { useDispatch } from 'react-redux'
+import { getAllProducts } from './store/slices/products.slice'
 
 function App() {
 
@@ -28,6 +29,11 @@ function App() {
 
   // }, [])
 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllProducts())
+  }, [])
 
   return (
     <div className="app">

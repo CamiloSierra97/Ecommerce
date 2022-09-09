@@ -3,16 +3,14 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import productsSlice from '../../store/slices/products.slice'
 import ProductDescription from '../productDetails/ProductDescription'
+import SimilarProducts from '../productDetails/SimilarProducts'
 
 const Product = () => {
 
   const { id } = useParams()
 
   const [productDetails, setProductDetails] = useState()
-
-  console.log(productDetails)
 
   useEffect(() => {
     const URL = `https://ecommerce-api-react.herokuapp.com/api/v1/products/${id}`
@@ -24,7 +22,12 @@ const Product = () => {
 
   return (
     <div>
-      <ProductDescription productDetails={productDetails} />
+      <ProductDescription
+        productDetails={productDetails}
+      />
+      <SimilarProducts
+        productDetails={productDetails}
+      />
     </div>
   )
 }

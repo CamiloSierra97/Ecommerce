@@ -18,19 +18,21 @@ const Purchases = () => {
 
 
   return (
-    <div className='purchases'>
-      <h2 className="purchases__title">Purchases</h2>
-      <div className='purchases_container'>
-        {
-          purchases?.map(purchase => {
-            <PurchaseCard
-              key={purchase.id}
-              purchase={purchase}
-            />
-          })
-        }
+    <>
+      <h2 className="purchases__title">My purchases</h2>
+      <div className='purchases'>
+        <div className='purchases__container'>
+          {
+            purchases?.map(purchase => (
+              <PurchaseCard
+                key={purchase.id}
+                purchase={purchase}
+              />
+            ))
+          }
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
