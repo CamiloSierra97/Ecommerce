@@ -3,7 +3,6 @@ import React from "react";
 import getConfig from "../../utils/getConfig";
 
 const CartProducts = ({ cartProduct, getAllProductsCart }) => {
-  console.log(cartProduct);
   const deleteProduct = () => {
     const URL = `https://sierra-ecommerce.onrender.com/api/v1/carts/${cartProduct.id}`;
     axios
@@ -20,19 +19,21 @@ const CartProducts = ({ cartProduct, getAllProductsCart }) => {
       <div className="cart__item ">
         <header className="cart__item-header">
           <div className="cart__item-header-interior">
-            <h5 className="cart__category">{cartProduct.brand}</h5>
-            <h3 className="cart__name">{cartProduct.title}</h3>
+            <h5 className="cart__category">{cartProduct.product.brand}</h5>
+            <h3 className="cart__name">{cartProduct.product.title}</h3>
           </div>
           <i className="cart__trash bx bxs-trash" onClick={deleteProduct}></i>
         </header>
       </div>
       <div className="cart__item-footer-container">
         <footer className="cart__item-footer">
-          <span className="cart__quantity">
-            {cartProduct.productsInCart.quantity}
-          </span>
-          <span className="cart__total-label">Price</span>
-          <p className="cart__total-number">&#36; {cartProduct.price}</p>
+          <span className="cart__iten-span">{cartProduct.amount}</span>
+          <div className="cart__item-div">
+            <span className="cart__total-label">Total</span>
+            <p className="cart__total-number">
+              &#36; {cartProduct.product.price}
+            </p>
+          </div>
         </footer>
       </div>
     </article>

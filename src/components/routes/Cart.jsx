@@ -14,15 +14,18 @@ const Cart = () => {
     axios
       .get(URL, getConfig())
       .then((res) => {
-        setCartProducts(res.data);
+        const products = res.data;
+        setCartProducts(products);
+        console.log(products);
         const total = products.reduce((acc, cv) => {
-          return Number(cv.price) * cv.productsInCart.amount + acc;
-        }, 0);
+          return Number(cv.product.price) + Number(cv.amount + acc);
+        }, -1);
         setTotalPrice(total);
       })
-      .catch((err) => setCartProducts());
+      .catch((err) => console.log(err));
   };
 
+  console.log(totalPrice);
   useEffect(() => {
     getAllProductsCart();
   }, []);

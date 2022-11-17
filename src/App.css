@@ -150,8 +150,8 @@ button {
 .loader__div {
   width: 10em;
   height: 10em;
-  background-color: #FFFFFF;
-  border: 10px solid #D33F3F;
+  background-color: #ffffff;
+  border: 10px solid #d33f3f;
   border-top: 10px solid #000000;
   border-radius: 50%;
   display: flex;
@@ -421,9 +421,17 @@ button {
   align-items: center;
 }
 
-.cart__quantity {
+.cart__iten-span {
   width: calc(1 / 3 * 100%);
   text-align: center;
+}
+
+.cart__item-div {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 10px;
+  width: 100%;
 }
 
 .cart__total-label {
@@ -433,7 +441,7 @@ button {
 }
 
 .cart__total-number {
-  width: calc(1 / 3 * 100%);
+  width: calc(1 / 5 * 100%);
   text-align: end;
   margin-right: 3%;
 }
