@@ -18,8 +18,8 @@ const Cart = () => {
         setCartProducts(products);
         console.log(products);
         const total = products.reduce((acc, cv) => {
-          return Number(cv.product.price) + Number(cv.amount + acc);
-        }, -1);
+          return Number(cv.product.price) + Number(cv.amount + acc) - 1;
+        }, 0);
         setTotalPrice(total);
       })
       .catch((err) => console.log(err));
