@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import Loader from "../../loader/Loader";
 import getConfig from "../../utils/getConfig";
 import CartProducts from "../cart/CartProducts";
 
@@ -16,7 +17,6 @@ const Cart = () => {
       .then((res) => {
         const products = res.data;
         setCartProducts(products);
-        console.log(products);
         const total = products.reduce((acc, cv) => {
           return Number(cv.product.price) + Number(cv.amount + acc) - 1;
         }, 0);
@@ -25,7 +25,6 @@ const Cart = () => {
       .catch((err) => console.log(err));
   };
 
-  console.log(totalPrice);
   useEffect(() => {
     getAllProductsCart();
   }, []);
@@ -53,13 +52,17 @@ const Cart = () => {
     <section className="cart">
       <h2 className="cart__title">Shopping Cart</h2>
       <div className="cart__container">
-        {cartProducts?.map((cartProduct) => (
-          <CartProducts
-            key={cartProduct.id}
-            cartProduct={cartProduct}
-            getAllProductsCart={getAllProductsCart}
-          />
-        ))}
+        {cartProducts ? (
+          cartProducts?.map((cartProduct) => (
+            <CartProducts
+              key={cartProduct.id}
+              cartProduct={cartProduct}
+              getAllProductsCart={getAllProductsCart}
+            />
+          ))
+        ) : (
+          <Loader />
+        )}
       </div>
       <hr className="cart__hr" />
       <footer className="cart__footer">

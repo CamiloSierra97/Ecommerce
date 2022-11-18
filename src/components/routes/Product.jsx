@@ -19,7 +19,6 @@ const Product = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(productDetails);
 
   return (
     <div>

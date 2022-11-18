@@ -1,9 +1,10 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import getConfig from "../../utils/getConfig";
 
 const ProductCard = ({ product }) => {
+  const [productInCart, setProductInCart] = useState();
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -13,14 +14,35 @@ const ProductCard = ({ product }) => {
   const addToCart = (e) => {
     e.stopPropagation();
     const URL = "https://sierra-ecommerce.onrender.com/api/v1/carts";
-    const data = {
-      productId: product?.id,
+    const newProduct = {
       amount: 1,
+      productId: product?.id,
     };
+
     axios
-      .post(URL, data, getConfig())
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+      .get(
+        `https://sierra-ecommerce.onrender.com/api/v1/carts/${product.id}`,
+        getConfig()
+      )
+      .then((res) => {
+        setProductInCart(res.data);
+        console.log(productInCart);
+        newProduct.amount = productExist.amount + amount;
+        axios
+          .patch(
+            `https://sierra-ecommerce.onrender.com/api/v1/carts/${product.id}`,
+            newProduct,
+            getConfig()
+          )
+          .then((res) => console.log(res.data))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => {
+        axios
+          .post(URL, newProduct, getConfig())
+          .then((res) => console.log(res.data))
+          .catch((err) => console.log(err));
+      });
   };
 
   return (

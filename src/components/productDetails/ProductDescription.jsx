@@ -4,6 +4,7 @@ import { useState } from "react";
 import getConfig from "../../utils/getConfig";
 
 const ProductDescription = ({ productDetails }) => {
+  const [productExist, setProductExist] = useState();
   const [counter, setCounter] = useState(1);
 
   const plus = () => setCounter(counter + 1);
@@ -16,13 +17,34 @@ const ProductDescription = ({ productDetails }) => {
 
   const addToCart = () => {
     const URL = "https://sierra-ecommerce.onrender.com/api/v1/carts";
-    const data = {
+    const newProduct = {
       amount: counter,
+      productId: productDetails?.id,
     };
+
     axios
-      .post(URL, data, getConfig())
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+      .get(
+        `https://sierra-ecommerce.onrender.com/api/v1/carts/${productDetails.id}`,
+        getConfig()
+      )
+      .then((res) => {
+        setProductExist(res.data);
+        newProduct.amount = productExist.amount + counter;
+        axios
+          .patch(
+            `https://sierra-ecommerce.onrender.com/api/v1/carts/${productDetails.id}`,
+            newProduct,
+            getConfig()
+          )
+          .then((res) => console.log(res.data))
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => {
+        axios
+          .post(URL, newProduct, getConfig())
+          .then((res) => console.log(res.data))
+          .catch((err) => console.log(err));
+      });
   };
 
   return (
@@ -41,9 +63,13 @@ const ProductDescription = ({ productDetails }) => {
             <div className="product__info-quantity-box">
               <h4 className="product__info-quantity-title">Quantity</h4>
               <div className="product__info-quantity-counter">
-                <button onClick={minus}>-</button>
+                <button onClick={minus}>
+                  <i className="bx bx-minus"></i>
+                </button>
                 <div>{counter}</div>
-                <button onClick={plus}>+</button>
+                <button onClick={plus}>
+                  <i className="bx bx-plus"></i>
+                </button>
               </div>
               <button className="product__info-btn-cart" onClick={addToCart}>
                 Add to cart
