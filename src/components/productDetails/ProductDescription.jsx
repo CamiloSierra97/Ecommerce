@@ -4,7 +4,6 @@ import { useState } from "react";
 import getConfig from "../../utils/getConfig";
 
 const ProductDescription = ({ productDetails }) => {
-  const [productExist, setProductExist] = useState();
   const [counter, setCounter] = useState(1);
 
   const plus = () => setCounter(counter + 1);
@@ -17,32 +16,31 @@ const ProductDescription = ({ productDetails }) => {
 
   const addToCart = () => {
     const URL = "https://sierra-ecommerce.onrender.com/api/v1/carts";
-    const newProduct = {
-      amount: counter,
-      productId: productDetails?.id,
-    };
-
     axios
-      .get(
-        `https://sierra-ecommerce.onrender.com/api/v1/carts/${productDetails.id}`,
-        getConfig()
-      )
+      .get(URL, getConfig())
       .then((res) => {
-        setProductExist(res.data);
-        newProduct.amount = productExist.amount + counter;
+        productInCart.push(res.data);
         axios
           .patch(
-            `https://sierra-ecommerce.onrender.com/api/v1/carts/${productDetails.id}`,
-            newProduct,
+            URL,
+            {
+              amount: productInCart[0]?.amount + counter,
+              productId: productDetails.id,
+            },
             getConfig()
           )
           .then((res) => console.log(res.data))
-          .catch((err) => console.log(err));
+          .catch((err) => console.log(err))
+          .finally((productInCart = []));
       })
-      .catch((err) => {
+      .catch((post) => {
         axios
-          .post(URL, newProduct, getConfig())
-          .then((res) => console.log(res.data))
+          .post(
+            "https://sierra-ecommerce.onrender.com/api/v1/carts/",
+            { amount: counter, productId: productDetails.id },
+            getConfig()
+          )
+          .then((res) => console.log(res))
           .catch((err) => console.log(err));
       });
   };
