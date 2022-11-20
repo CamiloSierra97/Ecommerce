@@ -18,7 +18,7 @@ const Cart = () => {
         const products = res.data;
         setCartProducts(products);
         const total = products.reduce((acc, cv) => {
-          return Number(cv.product.price) + Number(cv.amount + acc) - 1;
+          return Number(cv.product.price * cv.amount) + Number(acc);
         }, 0);
         setTotalPrice(total);
       })

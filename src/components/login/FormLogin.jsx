@@ -52,11 +52,11 @@ const FormLogin = () => {
       </form>
       <section className="sign-up__container">
         <small className="sign-up__title">Not registered yet?</small>
-        <NavLink to="/signup">
-          <div className="sign-up__link">
+        <small className="sign-up__link">
+          <NavLink to="/signup">
             <small>Sign up</small>
-          </div>
-        </NavLink>
+          </NavLink>
+        </small>
       </section>
     </div>
   );
