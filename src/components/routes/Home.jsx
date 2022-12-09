@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Loader from "../../loader/Loader";
+import Loader from "../home/loader/Loader";
 import ProductCard from "../home/ProductCard";
 
 const Home = () => {

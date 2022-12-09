@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import Loader from "../../loader/Loader";
+import Loader from "../home/loader/Loader";
 import getConfig from "../../utils/getConfig";
 import CartProducts from "../cart/CartProducts";
 
@@ -48,6 +48,14 @@ const Cart = () => {
       .catch((err) => console.log(err));
   };
 
+  const getUser = () => {
+    const URL = "https://sierra-ecommerce.onrender.com/api/v1/users/me";
+    axios
+      .get(URL, getConfig())
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <section className="cart">
       <h2 className="cart__title">Shopping Cart</h2>
@@ -70,6 +78,9 @@ const Cart = () => {
         <p className="cart__total-value">&#36; {totalPrice}</p>
         <button className="cart__btn" onClick={checkout}>
           Checkout
+        </button>
+        <button className="user" onClick={getUser}>
+          Putaaaaaaaaaaa
         </button>
       </footer>
     </section>

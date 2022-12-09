@@ -13,9 +13,10 @@ const ProductDescription = ({ productDetails }) => {
       setCounter(counter - 1);
     }
   };
+  let productInCart = [];
 
   const addToCart = () => {
-    const URL = "https://sierra-ecommerce.onrender.com/api/v1/carts";
+    const URL = `https://sierra-ecommerce.onrender.com/api/v1/carts/${productDetails.id}`;
     axios
       .get(URL, getConfig())
       .then((res) => {
@@ -40,7 +41,7 @@ const ProductDescription = ({ productDetails }) => {
             { amount: counter, productId: productDetails.id },
             getConfig()
           )
-          .then((res) => console.log(res))
+          .then((res) => console.log(res.data))
           .catch((err) => console.log(err));
       });
   };

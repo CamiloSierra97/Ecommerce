@@ -1,10 +1,19 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 
 const FormLogin = () => {
   const { register, handleSubmit, reset } = useForm();
+  const [showError, setShowError] = useState({
+    visibility: "hidden",
+  });
+
+  const passwordValidation = () => {
+    setShowError({
+      visibility: "hidden",
+    });
+  };
 
   const submit = (data) => {
     const URL = "https://sierra-ecommerce.onrender.com/api/v1/auth/login";
@@ -13,7 +22,13 @@ const FormLogin = () => {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setShowError({
+          visibility: "visible",
+          fontSize: "0.6rem",
+          fontWeight: "100",
+        });
+      });
     reset({
       email: "",
       password: "",
@@ -47,8 +62,11 @@ const FormLogin = () => {
             type="password"
             id="password"
           />
+          <small style={showError}>Wrong or invalid credentials</small>
         </div>
-        <button className="login__btn">Login</button>
+        <button className="login__btn" onClick={passwordValidation}>
+          Login
+        </button>
       </form>
       <section className="sign-up__container">
         <small className="sign-up__title">Not registered yet?</small>

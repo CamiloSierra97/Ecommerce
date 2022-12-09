@@ -11,29 +11,14 @@ import Navbar from "./components/shared/Navbar";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./store/slices/products.slice";
 import FormSignUp from "./components/signUp/FormSignUp";
-// import axios from "axios";
+import { getUser } from "./store/slices/user.slice";
 
 function App() {
-  // useEffect(() => {
-  //   const URL = "https://sierra-ecommerce.onrender.com/api/v1/users";
-  //   const obj = {
-  //     firstName: "Test",
-  //     lastName: "Test",
-  //     email: "test@gmail.com",
-  //     password: "root",
-  //     phone: "3123456789",
-  //     role: "normal",
-  //   };
-  //   axios
-  //     .post(URL, obj)
-  //     .then((res) => console.log(res.data))
-  //     .catch((err) => console.log(err));
-  // }, []);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllProducts());
+    dispatch(getUser());
   }, []);
 
   return (
